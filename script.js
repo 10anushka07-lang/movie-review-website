@@ -1,5 +1,8 @@
+// Fetch popular movies
 const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1'
+// Base URL for movie posters
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
+// Search movies by title
 const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="'
 
 const main = document.getElementById('main')
@@ -10,9 +13,11 @@ const search = document.getElementById('search')
 getMovies(API_URL)
 
 async function getMovies(url) {
+     // Send request to TMDB API
     const res = await fetch(url)
+    // Convert response into JSON
     const data = await res.json()
-
+ // Display movies on webpage
     showMovies(data.results)
 }
 
